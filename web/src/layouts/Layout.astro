@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+import Sidebar from "../components/Sidebar.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const {
+  title = "shivzee // esp-hosted",
+  description = "A blog about hosting a website on an ESP32 microcontroller.",
+  currentPath = "/",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="flex min-h-screen">
+      <Sidebar currentPath={currentPath} />
+      <main class="flex-1 md:ml-52 pt-16 md:pt-0 pb-24">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

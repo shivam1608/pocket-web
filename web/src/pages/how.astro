@@ -1,0 +1,138 @@
+---
+import Layout from "../layouts/Layout.astro";
+import archSvg from "../assets/arch.svg";
+---
+
+<Layout
+  title="shivzee // how?"
+  description="How I host my personal site on an ESP32 microcontroller."
+  currentPath="/how"
+>
+  <section class="px-6 md:px-14 pt-16 md:pt-24 pb-14 border-b border-[#161616]">
+    <div class="text-[#383838] text-xl tracking-[0.3em] uppercase mb-4">
+      [ build_log ]
+    </div>
+    <h1
+      class="text-6xl md:text-8xl text-[#c8ff00] leading-none tracking-tight mb-6"
+    >
+      How?
+    </h1>
+    <p
+      class="text-2xl md:text-3xl text-[#555] tracking-wide leading-relaxed max-w-xl"
+    >
+      The full stack behind a personal site running on a
+      <span class="text-[#c8ff00]"> $4 microcontroller</span> &ndash; explained.
+    </p>
+  </section>
+
+  <section class="px-6 md:px-14 py-14 border-b border-[#161616]">
+    <div class="text-[#383838] text-lg tracking-[0.3em] uppercase mb-6">
+      [ architecture ]
+    </div>
+    <div class="w-full overflow-x-auto py-8">
+      <div class="flex justify-center w-full">
+        <img
+          src={archSvg.src}
+          alt="Architecture Diagram"
+          class="min-w-[600px] w-full max-w-4xl opacity-90"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 md:px-14 py-14">
+    <div class="text-[#383838] text-lg tracking-[0.3em] uppercase mb-10">
+      [ the_breakdown ]
+    </div>
+
+    <div
+      class="max-w-2xl space-y-8 text-xl text-[#777] tracking-wide leading-relaxed"
+    >
+      <p>
+        The core idea is simple get maximum out of a $4 piece of silicon and
+        520KB of RAM by leveraging <strong class="text-[#c8ff00] font-normal"
+          >bindings</strong
+        >, much like you would in a Cloudflare environment.
+      </p>
+
+      <p>
+        It all started while I was studying about <strong
+          class="text-[#c8ff00] font-normal">Durable Objects</strong
+        >. I found the concept incredibly cool. While reading the docs, I
+        noticed an ESP32 sitting on my desk collecting dust. Since I already run
+        a homelab, I wanted the ESP to serve content to the internet just like
+        my main server does. The catch? An ESP32 can't run cloudflared, and
+        there was no way I was going to expose my home network to the open web.
+        So, I came up with this...
+      </p>
+
+      <p class="mt-4">
+        But first, let's take a step back and understand standard serverless
+        <strong class="text-[#c8ff00] font-normal"> Workers</strong>. By design,
+        they are entirely ephemeral. They spin up at the edge, run your code,
+        and die. If you try to save state in a global object like an active
+        connection to an ESP32 or a live counter it gets wiped out between
+        requests. Every new user hitting your API might trigger a completely
+        fresh instance of your code.
+      </p>
+
+      <p class="mt-4">
+        That's exactly what <strong class="text-[#c8ff00] font-normal"
+          >Durable Objects</strong
+        > solve. They bring state to the edge. A Durable Object guarantees that only
+        one single instance of itself exists globally at any given time. Because it
+        doesn't just spin up and die, it <em>can</em> keep data in its memory, maintain
+        long-lived WebSocket connections, and act as a reliable, persistent middleman
+        between the open internet and my local hardware.
+      </p>
+
+      <p class="mt-4">
+        Now back to topic... An HTTP request comes in from your browser and hits
+        a
+        <strong class="text-[#c8ff00] font-normal"> Cloudflare Worker</strong>.
+        Because we are using a Durable Object to maintain that globally active
+        WebSocket connection, the Worker can simply grab that connection and
+        forward the request directly to the microcontroller.
+      </p>
+      <p>
+        Once the request reaches the board, the ESP32 fetches the pre-built web
+        assets from a <strong class="text-[#c8ff00] font-normal"
+          >1.5MB LittleFS partition</strong
+        > on its internal flash. It chunks the data, streams it back over the WebSocket,
+        and Cloudflare delivers it seamlessly to you.
+      </p>
+
+      <p>
+        And that's it. You got yourself a tiny, low-power, and globally
+        distributed web server.
+      </p>
+
+      <p>
+        <span
+          class="text-[#383838] uppercase tracking-[0.2em] text-sm block mb-2"
+          >[ extra_cycle_use ]</span
+        >
+        Because the web server barely breaks a sweat, I realized I was wasting half
+        of the ESP32's dual-core architecture. To fix that, I decided to pin a
+        <strong class="text-[#c8ff00] font-normal"> Duino-Coin miner </strong>
+        to the second core. It's a work in progress, but depending on when you are
+        reading this, it might already be running and stacking up DUCO.
+      </p>
+    </div>
+
+    <div class="mt-16 pt-10 border-t border-[#161616] flex flex-wrap gap-8">
+      <a
+        href="/"
+        class="text-[#444] hover:text-[#c8ff00] text-xl tracking-widest transition-colors"
+      >
+        ← back_home
+      </a>
+      <a
+        href="/why"
+        class="text-[#444] hover:text-[#c8ff00] text-xl tracking-widest transition-colors"
+      >
+        ~/why →
+      </a>
+    </div>
+  </section>
+</Layout>

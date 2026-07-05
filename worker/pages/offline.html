@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Offline</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'VT323', monospace;
+            background-color: #080808;
+            color: #d0d0d0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        .header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #1c1c1c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            color: #c8ff00;
+            font-size: 2rem;
+            letter-spacing: 0.2em;
+        }
+        .main-content {
+            flex: 1;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .tag {
+            background: transparent;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        h1 {
+            font-size: 5rem;
+            color: #c8ff00;
+            font-weight: normal;
+            margin-bottom: 3rem;
+            line-height: 1;
+        }
+        .story-section {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .story-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .story-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 4rem;
+            }
+            .story-row:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            .header { padding: 1.5rem 3.5rem; }
+            .main-content { padding: 6rem 3.5rem; }
+        }
+        .text-block {
+            flex: 1;
+            font-size: 2.2rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        .image-block {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .funny-img {
+            max-height: 280px;
+            border-radius: 4px;
+            border: 1px solid #1c1c1c;
+            object-fit: cover;
+            width: 100%;
+            max-width: 400px;
+        }
+        figure { margin: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        figcaption {
+            color: #444; 
+            font-size: 1.2rem; 
+            text-align: center; 
+            margin-top: 0.8rem; 
+            letter-spacing: 0.1em;
+        }
+        .status-area {
+            margin-top: auto;
+            padding-top: 3rem;
+            border-top: 1px solid #1c1c1c;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .status-indicator {
+            font-size: 1.6rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            background-color: #ff3333;
+            display: inline-block;
+        }
+        .btn {
+            background: transparent;
+            color: #c8ff00;
+            border: 1px solid #c8ff00;
+            padding: 0.8rem 2rem;
+            font-family: inherit;
+            font-size: 1.6rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+            letter-spacing: 0.1em;
+        }
+        .btn:hover {
+            background: #c8ff00;
+            color: #0d0d0d;
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 3.5rem; }
+            .text-block { font-size: 1.8rem; }
+            .funny-img { max-height: 220px; }
+            .status-area { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-title">shivzee</div>
+        <div style="color: #444; letter-spacing: 0.2em;">sys_error</div>
+    </header>
+
+    <main class="main-content">
+        <span class="tag">[ offline ]</span>
+        <h1>ESP32 is Offline</h1>
+        
+        <div class="story-section">
+            <div class="story-row">
+                <div class="text-block">
+                    ESP32 is offline possibly due to powercut or...
+                </div>
+                <div class="image-block">
+                    <figure>
+                        <img src="https://i.ibb.co/WWkDS0ty/image.png" alt="cat powercut" class="funny-img">
+                        <figcaption>error_power</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="story-row">
+                <div class="text-block">
+                    ...or due to internet exhausted.<br>
+                    <span style="font-size: 1.4rem; color: #444;">donate for my recharge :) <a href="https://buymeacoffee.com/shivzee" target="_blank" style="color: #c8ff00; text-decoration: none; border-bottom: 1px dashed #c8ff00; margin-left: 10px;">buy_me_a_coffee</a></span>
+                </div>
+                <div class="image-block">
+                    <figure>
+                        <img src="https://i.ibb.co/JFgtZPSD/image.png" alt="cat internet" class="funny-img">
+                        <figcaption>error_net</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-area">
+            <div class="status-indicator">
+                <span class="status-dot"></span> Status: Disconnected
+            </div>
+            <button class="btn" onclick="window.location.reload()">retry_connection <span>→</span></button>
+        </div>
+    </main>
+</body>
+</html>

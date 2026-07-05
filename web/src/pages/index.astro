@@ -1,0 +1,251 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const slides = [
+	{ src: "https://i.ibb.co/5W561gTQ/esp.webp", alt: "ESP32 on my desk" },
+	{ src: "https://i.ibb.co/TM61458y/espking.webp", alt: "ESP32 king mode" },
+];
+---
+
+<Layout
+	title="shivzee // home"
+	description="Shivam's personal site running on an ESP32 microcontroller."
+	currentPath="/"
+>
+	<section
+		class="lg:min-h-screen flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-0 px-6 md:px-14 py-3 lg:py-14 mt-0 lg:mt-0"
+	>
+		<div class="flex-1 min-w-0 lg:pr-12">
+			<h1
+				class="text-7xl md:text-9xl text-[#c8ff00] leading-none tracking-tight mb-5"
+			>
+				Hey.
+			</h1>
+
+			<p
+				class="text-4xl md:text-5xl text-[#d0d0d0] leading-snug tracking-wide mb-2"
+			>
+				I'm <span class="text-[#c8ff00]">Shivam</span>
+			</p>
+			<p class="text-3xl md:text-4xl text-[#555] tracking-wide mb-10">
+				aka <span class="text-[#888]">shivzee</span>
+			</p>
+
+			<div class="h-px w-20 bg-[#c8ff00] opacity-30 mb-10"></div>
+
+			<p
+				class="text-2xl md:text-3xl text-[#666] tracking-wide leading-relaxed mb-8"
+			>
+				Electronics &amp; Computer Engineer. I build things that
+				probably shouldn't exist — like <span class="text-[#c8ff00]"
+					>this website</span
+				>, served straight from a <span class="text-[#c8ff00]"
+					>$4 chip</span
+				> on my desk.
+			</p>
+
+			<div class="flex items-baseline gap-3 mb-10">
+				<span class="text-[#444] text-xl tracking-wider">age:</span>
+				<span
+					id="age-timer"
+					class="text-[#c8ff00] text-2xl tracking-widest font-mono tabular-nums"
+					>...</span
+				>
+				<span class="text-[#333] text-lg">years</span>
+			</div>
+
+			<div
+				class="flex items-center gap-3 text-[#333] text-xl tracking-widest"
+			>
+				<span>scroll_down</span>
+				<span class="animate-bounce">↓</span>
+			</div>
+		</div>
+		<div class="w-full lg:w-[42%] shrink-0">
+			<div
+				class="relative w-full overflow-hidden"
+				style="aspect-ratio: 2918/2090;"
+			>
+				<div
+					id="slider-track"
+					class="flex h-full"
+					style="width: 200%; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);"
+				>
+					{
+						slides.map((s) => (
+							<div class="relative h-full" style="width: 50%;">
+								<img
+									src={s.src}
+									alt={s.alt}
+									class="w-full h-full object-cover block"
+								/>
+							</div>
+						))
+					}
+				</div>
+
+				<span
+					class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#c8ff00] opacity-60 z-20 pointer-events-none"
+				></span>
+				<span
+					class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#c8ff00] opacity-60 z-20 pointer-events-none"
+				></span>
+				<span
+					class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#c8ff00] opacity-60 z-20 pointer-events-none"
+				></span>
+				<span
+					class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#c8ff00] opacity-60 z-20 pointer-events-none"
+				></span>
+
+				<div
+					class="absolute top-5 left-6 select-none pointer-events-none z-20"
+				>
+					<div
+						style="font-family:'VT323',monospace; transform:rotate(-4deg); text-shadow:0 0 16px rgba(200,255,0,0.55); white-space:nowrap;"
+						class="text-[#c8ff00] text-3xl leading-tight"
+					>
+						Hey, you know<br />I served this!
+					</div>
+					<svg
+						class="mt-1 ml-6"
+						width="66"
+						height="42"
+						viewBox="0 0 66 42"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M4 4 C22 4, 58 32, 62 38"
+							stroke="#c8ff00"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							fill="none"
+							stroke-dasharray="4.5 2.5"
+							opacity="0.78"></path>
+						<path
+							d="M62 38 L51 33 M62 38 L59 27"
+							stroke="#c8ff00"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							opacity="0.78"></path>
+					</svg>
+				</div>
+
+				<div class="absolute bottom-4 right-4 flex gap-2 z-20">
+					{
+						slides.map((_, i) => (
+							<span
+								data-dot={i}
+								class={`inline-block w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === 0 ? "bg-[#c8ff00] w-4" : "bg-[#444]"}`}
+							/>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="border-t border-[#161616]">
+		<div class="grid grid-cols-1 md:grid-cols-2">
+			<div
+				class="px-6 md:px-14 py-16 md:border-r border-[#161616] hover:bg-[#090909] transition-colors duration-300 group"
+			>
+				<div
+					class="text-[#383838] text-lg tracking-[0.3em] uppercase mb-4 group-hover:text-[#c8ff00] transition-colors duration-300"
+				>
+					[ curiosity ]
+				</div>
+				<h2
+					class="text-5xl md:text-6xl text-[#d0d0d0] mb-5 tracking-wide"
+				>
+					Why?
+				</h2>
+				<p
+					class="text-2xl text-[#555] tracking-wide leading-relaxed mb-8"
+				>
+					I'm an engineer dude, what do you expect? Just a bored mind,
+					a dusty ESP32, and an excuse to play with Cloudflare Durable
+					Objects.
+				</p>
+				<a
+					href="/why"
+					class="inline-flex items-center gap-3 border border-[#c8ff00] text-[#c8ff00] px-5 py-2.5 text-xl tracking-widest hover:bg-[#c8ff00] hover:text-[#0d0d0d] transition-colors duration-200"
+				>
+					read_more <span>→</span>
+				</a>
+			</div>
+
+			<div
+				class="px-6 md:px-14 py-16 hover:bg-[#090909] transition-colors duration-300 group"
+			>
+				<div
+					class="text-[#383838] text-lg tracking-[0.3em] uppercase mb-4 group-hover:text-[#c8ff00] transition-colors duration-300"
+				>
+					[ build_log ]
+				</div>
+				<h2
+					class="text-5xl md:text-6xl text-[#d0d0d0] mb-5 tracking-wide"
+				>
+					How?
+				</h2>
+				<p
+					class="text-2xl text-[#555] tracking-wide leading-relaxed mb-8"
+				>
+					Squeezing maximum performance from a $4 chip. WebSockets,
+					Durable Objects, and a 1.5MB LittleFS partition. Here is how
+					it flows.
+				</p>
+				<a
+					href="/how"
+					class="inline-flex items-center gap-3 border border-[#c8ff00] text-[#c8ff00] px-5 py-2.5 text-xl tracking-widest hover:bg-[#c8ff00] hover:text-[#0d0d0d] transition-colors duration-200"
+				>
+					read_more <span>→</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		const DOB = new Date("2005-08-16T00:00:00");
+		function updateAge() {
+			const diffMs = Date.now() - DOB.getTime();
+			const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+			const el = document.getElementById("age-timer");
+			if (el) el.textContent = years.toFixed(9);
+		}
+		updateAge();
+		setInterval(updateAge, 100);
+	</script>
+
+	<script>
+		const TOTAL = 2;
+		const INTERVAL_MS = 3000;
+
+		const track = document.getElementById(
+			"slider-track",
+		) as HTMLElement | null;
+		const dots = document.querySelectorAll<HTMLElement>("[data-dot]");
+
+		let current = 0;
+
+		function goTo(idx: number) {
+			current = idx;
+			if (track)
+				track.style.transform = `translateX(-${(100 / TOTAL) * idx}%)`;
+			dots.forEach((d, i) => {
+				if (i === idx) {
+					d.style.backgroundColor = "#c8ff00";
+					d.style.width = "1rem";
+				} else {
+					d.style.backgroundColor = "#444";
+					d.style.width = "0.375rem";
+				}
+			});
+		}
+
+		dots.forEach((d) => {
+			d.addEventListener("click", () => goTo(Number(d.dataset.dot)));
+		});
+
+		setInterval(() => goTo((current + 1) % TOTAL), INTERVAL_MS);
+	</script>
+</Layout>

@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="shivzee // why esp?"
+  description="Why I host my personal site on an ESP32 microcontroller."
+  currentPath="/why"
+>
+  <section class="px-6 md:px-14 pt-16 md:pt-24 pb-14 border-b border-[#161616]">
+    <div class="text-[#383838] text-xl tracking-[0.3em] uppercase mb-4">
+      [ entry_002 ]
+    </div>
+    <h1
+      class="text-6xl md:text-8xl text-[#c8ff00] leading-none tracking-tight mb-6"
+    >
+      Why?
+    </h1>
+    <h2
+      class="text-4xl md:text-5xl text-[#d0d0d0] font-light tracking-tight leading-snug max-w-3xl mt-8"
+    >
+      I'm an engineer dude, <br /><span class="text-[#c8ff00] italic"
+        >what do you expect?</span
+      >
+    </h2>
+  </section>
+
+  <section class="px-6 md:px-14 py-16">
+    <div class="text-[#383838] text-lg tracking-[0.3em] uppercase mb-10">
+      [ the_real_reason ]
+    </div>
+
+    <div
+      class="max-w-2xl space-y-8 text-xl text-[#777] tracking-wide leading-relaxed"
+    >
+      <p>
+        Jokes apart, the real story is much simpler. <strong
+          class="text-[#c8ff00] font-normal">I was just really bored.</strong
+        >
+      </p>
+
+      <p>
+        I was sitting at my desk, staring at this tiny ESP32 microcontroller
+        catching dust in the corner. I already run a full-blown homelab to
+        self-host my stuff, so I figured, why not make this little guy carry
+        some of the weight?
+      </p>
+
+      <p>
+        Around the same time, I had been reading up on <strong
+          class="text-[#c8ff00] font-normal">Cloudflare Durable Objects</strong
+        > and stateful edge computing. The tech seemed like absolute black magic,
+        and I desperately wanted an excuse to play with it. It just clicked what if
+        I tied them together?
+      </p>
+
+      <p>
+        Honestly? There is zero practical reason to host a website on hardware
+        that most people use to blink LEDs or read temperature sensors. But as
+        engineers, we don't always build things because they're sensible. We
+        build them <strong class="text-[#c8ff00] font-normal"
+          >just for fun</strong
+        >.
+      </p>
+
+      <p>
+        I wanted to see what happens when you push the absolute limits of a $4
+        chip. I wanted to prove to myself that <strong
+          class="text-[#c8ff00] font-normal">engineering has no limits</strong
+        > unless you accept them. And let's be real the look on people's faces when
+        I tell them my personal site runs on an ESP32 is worth every single segmentation
+        fault.
+      </p>
+    </div>
+
+    <div class="mt-20 pt-10 border-t border-[#161616] max-w-2xl">
+      <p class="text-2xl text-[#444] tracking-wide leading-relaxed max-w-lg">
+        You're reading this served from a hardware that most people use to blink
+        LEDs.
+        <span class="text-[#c8ff00]"> That's the whole point.</span>
+      </p>
+      <div class="mt-10 flex flex-wrap gap-8">
+        <a
+          href="/"
+          class="text-[#444] hover:text-[#c8ff00] text-xl tracking-widest transition-colors"
+        >
+          ← back_home
+        </a>
+        <a
+          href="/how"
+          class="text-[#444] hover:text-[#c8ff00] text-xl tracking-widest transition-colors"
+        >
+          ~/how →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

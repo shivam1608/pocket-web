@@ -1,0 +1,13 @@
+name = "esp32-tunnel"
+main = "worker.js"
+compatibility_date = "2026-06-19"
+
+# Define the Durable Object Binding
+[[durable_objects.bindings]]
+name = "ESP_HUB"
+class_name = "EspHub"
+
+# Configure the migration to spin up the Durable Object
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["EspHub"]
