@@ -9,11 +9,13 @@ html {
   scroll-behavior: smooth;
   background-color: #0d0d0d;
   color: #c8c8c8;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'VT323', monospace;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar */
