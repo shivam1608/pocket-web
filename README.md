@@ -7,12 +7,12 @@
 
 Host a personal website on a **$4 ESP32 microcontroller** tunnelled to the open internet via a Cloudflare Durable Object, with zero port-forwarding and zero VPN.
 
-> Live at → [esp.shivzee.in](https://esp.shivzee.in)
+> Go see yourself at → [esp.shivzee.in](https://esp.shivzee.in)
 
 ---
 
-<!-- Add a screenshot or photo of your setup here -->
-<!-- Example: <img src="assets/setup.jpg" width="700" alt="ESP32 Setup"> -->
+<img width="2918" height="2090" alt="image" src="https://github.com/user-attachments/assets/0de7fa82-ef17-4209-91e6-bb0e065329b9" />
+
 
 ---
 
